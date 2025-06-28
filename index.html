@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>University Virtual Tour</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(120deg, #e0eafc 0%, #cfdef3 100%);
+            margin: 0;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            padding: 32px 24px 40px 24px;
+        }
+        h1 {
+            color: #2d3a4b;
+            margin-bottom: 8px;
+            font-size: 2.4rem;
+            letter-spacing: 1px;
+        }
+        p {
+            color: #4b5d6b;
+            margin-bottom: 32px;
+            font-size: 1.1rem;
+        }
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+        button {
+            background: linear-gradient(90deg, #4f8cff 0%, #2355d8 100%);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 14px 36px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(79, 140, 255, 0.15);
+            transition: background 0.2s, transform 0.2s;
+        }
+        button:hover, button:focus {
+            background: linear-gradient(90deg, #2355d8 0%, #4f8cff 100%);
+            transform: translateY(-2px) scale(1.04);
+            outline: none;
+        }
+        #viewer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 300px;
+            background: #f5f8fa;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.07);
+            padding: 18px;
+        }
+        @media (max-width: 700px) {
+            .container {
+                padding: 12px 4px 24px 4px;
+            }
+            #viewer iframe {
+                width: 100% !important;
+                height: 300px !important;
+            }
+            .button-group {
+                flex-direction: column;
+                gap: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>University Virtual Tour</h1>
+        <p>Explore our campus in 360°! Select a location below to begin your virtual tour.</p>
+        
+        <!-- GBU Drone Shot Video -->
+        <div style="display:flex;justify-content:center;margin-bottom:32px;">
+            <iframe width="700" height="394" style="max-width:100%;border-radius:14px;border:0;box-shadow:0 2px 12px rgba(44,62,80,0.10);" 
+                src="https://www.youtube.com/embed/aV-XncxVM-Q" 
+                title="GBU Drone Shot" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+            </iframe>
+        </div>
+        
+        <div class="button-group">
+            <button onclick="showView('library')">📚 Library</button>
+            <button onclick="showView('stadium')">🏟️ Indoor Stadium</button>
+            <button onclick="showView('sarovar')">🌊 Sarovar</button>
+            <button onclick="showView('soict')">💻 SOICT</button>
+            <button onclick="showView('complex')">🏢 Complex</button>
+        </div>
+        <div id="viewer">
+            <span style="color:#888;font-size:1.1rem;">Select a location to view the 360° tour.</span>
+        </div>
+    </div>
+    <script>
+        function showView(place) {
+            let iframe = '';
+            if (place === 'library') {
+                iframe = `<iframe src="https://www.google.com/maps/embed?pb=!4v1749725160295!6m8!1m7!1sCAoSFkNJSE0wb2dLRUlDQWdJQ2M1di1ZVXc.!2m2!1d28.41985939320164!2d77.525750941025!3f300.88281944128124!4f10.816631661407584!5f0.7820865974627469" width="600" height="450" style="border:0;border-radius:10px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`;
+            } else if (place === 'stadium') {
+                iframe = `<iframe src="https://www.google.com/maps/embed?pb=!4v1749725343248!6m8!1m7!1sCAoSFkNJSE0wb2dLRUlDQWdJRHE3WnppZGc.!2m2!1d28.42593205488336!2d77.52865337932678!3f223.4337777121809!4f-4.340675287015415!5f0.7820865974627469" width="600" height="450" style="border:0;border-radius:10px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`;
+            } else if (place === 'sarovar') {
+                iframe = `<iframe src="https://www.google.com/maps/embed?pb=!4v1749726136229!6m8!1m7!1sCAoSFkNJSE0wb2dLRUlDQWdJRFN4TWlBY0E.!2m2!1d28.41892110941485!2d77.52361378367459!3f341.2085374995199!4f8.00431780567483!5f0.7820865974627469" width="600" height="450" style="border:0;border-radius:10px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`;
+            } else if (place === 'soict') {
+                iframe = `<iframe src="https://www.google.com/maps/embed?pb=!4v1749726343869!6m8!1m7!1sCAoSFkNJSE0wb2dLRUlDQWdJRGM4OEt5Vmc.!2m2!1d28.41650349790493!2d77.52347948822445!3f176.3767090636442!4f4.874900188830139!5f0.7820865974627469" width="600" height="450" style="border:0;border-radius:10px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`;
+            } else if (place === 'complex') {
+                iframe = `<iframe src="https://www.google.com/maps/embed?pb=!4v1749728237676!6m8!1m7!1sCAoSF0NJSE0wb2dLRUlDQWdJQ0V6WWp4aHdF!2m2!1d28.42754199082566!2d77.52787790992966!3f171.99951811671482!4f3.6845680556189535!5f0.7820865974627469" width="600" height="450" style="border:0;border-radius:10px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`;
+            }
+            document.getElementById('viewer').innerHTML = iframe;
+        }
+    </script>
+</body>
+</html>
